@@ -23,28 +23,15 @@ def download_pdf(pdf_url: str) -> str:
 
 
 def extract_text(pdf_path: str, max_pages: int | None = 30) -> str:
-    """מחלץ טקסט מה-PDF באמצעות pdftotext (poppler-utils).
-    max_pages מגביל לכמה עמודים ראשונים - דוחות תקופתיים יכולים
-    להיות מאות עמודים, ולרוב המידע החשוב (תוצאות כספיות) בהתחלה.
-    """
+    """מחלץ טקסט מה-PDF באמצעות pdftotext (poppler-utils)."""
     cmd = ["pdftotext", "-layout"]
     if max_pages:
         cmd += ["-f", "1", "-l", str(max_pages)]
     cmd += [pdf_path, "-"]
 
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    except FileNotFoundError as exc:
-        raise RuntimeError(
-            "הכלי 'pdftotext' אינו מותקן במערכת. התקינו את חבילת poppler או את כלי pdftotext."
-        ) from exc
-    except subprocess.CalledProcessError as exc:
-        raise RuntimeError(
-            f"שגיאה בהרצת pdftotext: {exc.stderr.strip() or exc}
-"        ) from exc
-
+    result = subprocess.run(cmd, capture_output=True, text=True)
     text = result.stdout
-    text = re.sub(r"\n{3,}", "\n\n", text)  # ניקוי שורות ריקות מופרזות
+    text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 
 
