@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>לוח מעקב מניות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0E1420;
+    --surface: #161D2B;
+    --surface-2: #1D2538;
+    --amber: #D4A24C;
+    --amber-dim: #8A6B33;
+    --up: #6FA88B;
+    --down: #C2604D;
+    --text: #EDE8DD;
+    --text-muted: #8B93A5;
+    --hairline: #2A3247;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'Heebo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; direction: ltr; unicode-bidi: isolate; }
+  .serif { font-family: 'Frank Ruhl Libre', serif; }
+
+  /* ---- Ticker strip (signature element) ---- */
+  .ticker-wrap {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: scroll 30s linear infinite;
+    padding: 10px 0;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .ticker-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 0 22px;
+    border-right: 1px solid var(--hairline);
+    font-size: 13px;
+  }
+  .ticker-item .t-name { color: var(--amber); letter-spacing: 0.04em; }
+  .ticker-item .t-price { color: var(--text); }
+  .ticker-item .t-change.up { color: var(--up); }
+  .ticker-item .t-change.down { color: var(--down); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; overflow-x: auto; }
+  }
+
+  /* ---- Header ---- */
+  header {
+    padding: 28px 20px 18px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  header h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0 0 4px;
+    color: var(--text);
+  }
+  header .subtitle {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .updated-stamp {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--amber-dim);
+    border: 1px solid var(--hairline);
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  /* ---- Cards ---- */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .card-top {
+    padding: 18px 20px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .card-top .names .he {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: 19px;
+  }
+  .card-top .names .en {
+    font-family: 'JetBrains Mono', monospace;
+    direction: ltr;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  .price-block { text-align: left; direction: ltr; }
+  .price-block .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .price-block .change { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .price-block .change.up { color: var(--up); }
+  .price-block .change.down { color: var(--down); }
+  .price-block .src {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ---- Technical badges ---- */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 20px;
+  }
+  .badge {
+    background: var(--surface-2);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+  .badge .label { color: var(--text-muted); }
+  .badge .val { font-family: 'JetBrains Mono', monospace; direction: ltr; }
+  .badge .val.up { color: var(--up); }
+  .badge .val.down { color: var(--down); }
+
+  /* ---- Analysis sections ---- */
+  .analysis {
+    border-top: 1px solid var(--hairline);
+  }
+  .analysis-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--amber);
+    font-family: 'Heebo', sans-serif;
+    font-size: 13px;
+    padding: 12px 20px;
+    text-align: right;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .analysis-toggle .arrow { transition: transform 0.2s; }
+  .analysis-toggle.open .arrow { transform: rotate(180deg); }
+  .analysis-body {
+    display: none;
+    padding: 4px 20px 18px;
+  }
+  .analysis-body.open { display: block; }
+
+  .field { margin-bottom: 14px; }
+  .field .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .field .value {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .field.summary .value {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 15px;
+  }
+
+  .report-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 0 20px 12px;
+  }
+
+  .errors-note {
+    font-size: 11px;
+    color: var(--down);
+    padding: 0 20px 14px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<header>
+  <h1>לוח מעקב מניות</h1>
+  <div class="subtitle">מחיר רשמי, ניתוח טכני, ותקציר אנליסט - מתעדכן אוטומטית</div>
+  <div class="updated-stamp" id="updatedStamp">טוען...</div>
+</header>
+
+<main id="cardsContainer">
+  <div class="empty-state">טוען נתונים...</div>
+</main>
+
+<script>
+function formatPrice(p) {
+  return p != null ? p.toFixed(2) : '—';
+}
+
+function changeClass(c) {
+  if (c == null) return '';
+  return c >= 0 ? 'up' : 'down';
+}
+
+function changeSign(c) {
+  if (c == null) return '';
+  return (c >= 0 ? '+' : '') + c.toFixed(2) + '%';
+}
+
+function timeAgo(isoString) {
+  const then = new Date(isoString);
+  const diffMs = Date.now() - then.getTime();
+  const hours = Math.floor(diffMs / 3600000);
+  if (hours < 1) return 'לפני פחות משעה';
+  if (hours === 1) return 'לפני שעה';
+  return `לפני ${hours} שעות`;
+}
+
+const FIELD_LABELS = {
+  revenue_yoy_growth: 'צמיחת הכנסות',
+  margin_trend: 'מגמת שוליים',
+  guidance: 'תחזית הנהלה',
+  cash_flow_and_debt: 'תזרים והתחייבויות',
+  technical_summary: 'קריאה טכנית',
+  overall_summary: 'סיכום'
+};
+
+function buildCard(stock) {
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const price = stock.official_price;
+  const tech = stock.technical;
+  const displayPrice = price ? price.price_ils : (tech ? tech.current_price : null);
+  const displayChange = price ? price.change_percent : null;
+
+  let html = `
+    <div class="card-top">
+      <div class="names">
+        <div class="he serif">${stock.name_he}</div>
+        <div class="en mono">${stock.ticker}</div>
+      </div>
+      <div class="price-block">
+        <div class="price mono">₪${formatPrice(displayPrice)}</div>
+        ${displayChange != null ? `<div class="change mono ${changeClass(displayChange)}">${changeSign(displayChange)}</div>` : ''}
+        <div class="src">${price ? 'מאיה · בורסת ת"א' : 'Yahoo'}</div>
+      </div>
+    </div>
+  `;
+
+  if (tech) {
+    html += `<div class="badges">
+      <div class="badge"><span class="label">RSI</span><span class="val">${tech.rsi_14 ?? '—'}</span></div>
+      <div class="badge"><span class="label">EMA20</span><span class="val">${tech.ema_20 ?? '—'}</span></div>
+      <div class="badge"><span class="label">EMA50</span><span class="val">${tech.ema_50 ?? '—'}</span></div>
+      <div class="badge"><span class="label">MACD</span><span class="val ${tech.macd ? changeClass(tech.macd.histogram) : ''}">${tech.macd ? tech.macd.histogram : '—'}</span></div>
+      <div class="badge"><span class="label">52w</span><span class="val">${tech['52w_low'] ?? '—'}–${tech['52w_high'] ?? '—'}</span></div>
+    </div>`;
+  }
+
+  if (stock.report_title) {
+    html += `<div class="report-title">דוח אחרון: ${stock.report_title}</div>`;
+  }
+
+  if (stock.analysis) {
+    html += `<div class="analysis">
+      <button class="analysis-toggle">
+        <span>ניתוח אנליסט מלא</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="analysis-body">`;
+    for (const [key, label] of Object.entries(FIELD_LABELS)) {
+      if (stock.analysis[key]) {
+        html += `<div class="field ${key === 'overall_summary' ? 'summary' : ''}">
+          <div class="eyebrow">${label}</div>
+          <div class="value">${stock.analysis[key]}</div>
+        </div>`;
+      }
+    }
+    html += `</div></div>`;
+  }
+
+  if (stock.errors && stock.errors.length) {
+    html += `<div class="errors-note">חלק מהמידע לא נטען: ${stock.errors.join(' · ')}</div>`;
+  }
+
+  card.innerHTML = html;
+
+  const toggle = card.querySelector('.analysis-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      toggle.nextElementSibling.classList.toggle('open');
+    });
+  }
+
+  return card;
+}
+
+function buildTicker(stocks) {
+  const track = document.getElementById('tickerTrack');
+  const items = Object.values(stocks).map(s => {
+    const price = s.official_price;
+    const p = price ? price.price_ils : (s.technical ? s.technical.current_price : null);
+    const c = price ? price.change_percent : null;
+    return `<span class="ticker-item">
+      <span class="t-name mono">${s.ticker}</span>
+      <span class="t-price mono">₪${formatPrice(p)}</span>
+      ${c != null ? `<span class="t-change mono ${changeClass(c)}">${changeSign(c)}</span>` : ''}
+    </span>`;
+  }).join('');
+  track.innerHTML = items + items; // כפול, לגלילה רציפה
+}
+
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('updatedStamp').textContent =
+      `עודכן לאחרונה: ${timeAgo(data.generated_at)}`;
+
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = '';
+
+    const stocks = Object.values(data.stocks);
+    if (!stocks.length) {
+      container.innerHTML = '<div class="empty-state">אין עדיין נתונים. ה-Action הראשון עוד לא רץ.</div>';
+      return;
+    }
+
+    buildTicker(data.stocks);
+    stocks.forEach(s => container.appendChild(buildCard(s)));
+  })
+  .catch(err => {
+    document.getElementById('cardsContainer').innerHTML =
+      `<div class="empty-state">לא ניתן לטעון את הנתונים כרגע.<br><span class="mono" style="font-size:11px">${err}</span></div>`;
+    document.getElementById('updatedStamp').textContent = 'שגיאת טעינה';
+  });
+</script>
+
+</body>
+</html>

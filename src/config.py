@@ -53,6 +53,7 @@ COMPANIES = {
         "maya_security_id": 1170877,
     },
 }
+    
 
 
 def get_company(ticker: str) -> dict:
