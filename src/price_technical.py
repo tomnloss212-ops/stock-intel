@@ -123,6 +123,7 @@ def get_technical_snapshot(yahoo_symbol: str) -> dict:
         "ema_50": round(ema_50[-1], 2) if ema_50 else None,
         "macd": calc_macd(closes),
         "data_points_used": len(closes),
+        "recent_closes": [round(c, 2) for c in closes[-30:]],
     }
 
 

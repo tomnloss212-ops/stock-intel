@@ -29,7 +29,16 @@ def extract_text(pdf_path: str, max_pages: int | None = 30) -> str:
         cmd += ["-f", "1", "-l", str(max_pages)]
     cmd += [pdf_path, "-"]
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    except FileNotFoundError:
+        raise RuntimeError(
+            "הכלי 'pdftotext' אינו מותקן במערכת.\n"
+            "התקינו דרך: brew install poppler"
+        )
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"שגיאה בהרצת pdftotext: {e.stderr}")
+
     text = result.stdout
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()

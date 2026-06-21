@@ -6,22 +6,24 @@
 <title>לוח מעקב מניות</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #08060D;
-    --surface: #120F1C;
-    --surface-2: #1A1528;
+    --bg: #07050C;
+    --surface: #130F1F;
+    --surface-2: #1C1530;
+    --border: rgba(177, 78, 255, 0.14);
+    --border-strong: rgba(177, 78, 255, 0.4);
     --purple: #B14EFF;
-    --purple-soft: #8B5FBF;
-    --purple-glow: rgba(177, 78, 255, 0.45);
+    --purple-deep: #6B2FA0;
+    --purple-glow: rgba(177, 78, 255, 0.5);
     --up: #4ADE9A;
-    --up-glow: rgba(74, 222, 154, 0.35);
+    --up-glow: rgba(74, 222, 154, 0.4);
     --down: #FF5C8A;
-    --down-glow: rgba(255, 92, 138, 0.35);
-    --text: #EDE9F5;
-    --text-muted: #8A82A3;
-    --hairline: #2A2340;
+    --down-glow: rgba(255, 92, 138, 0.4);
+    --amber: #FFC862;
+    --text: #F1ECFB;
+    --text-muted: #8F87A8;
   }
 
   * { box-sizing: border-box; }
@@ -29,7 +31,9 @@
   body {
     margin: 0;
     background: var(--bg);
-    background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(177, 78, 255, 0.12), transparent);
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% -5%, rgba(177, 78, 255, 0.18), transparent),
+      radial-gradient(ellipse 50% 30% at 100% 20%, rgba(74, 222, 154, 0.06), transparent);
     color: var(--text);
     font-family: 'Heebo', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -38,260 +42,207 @@
   .mono { font-family: 'JetBrains Mono', monospace; direction: ltr; unicode-bidi: isolate; }
   .serif { font-family: 'Frank Ruhl Libre', serif; }
 
+  /* ---- Ticker ---- */
   .ticker-wrap {
     background: var(--surface-2);
-    border-bottom: 1px solid var(--hairline);
-    box-shadow: 0 1px 20px var(--purple-glow);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 24px var(--purple-glow);
     overflow: hidden;
     white-space: nowrap;
     position: sticky;
     top: 0;
     z-index: 10;
+    backdrop-filter: blur(8px);
   }
-  .ticker-track {
-    display: inline-flex;
-    animation: scroll 30s linear infinite;
-    padding: 10px 0;
-  }
+  .ticker-track { display: inline-flex; animation: scroll 32s linear infinite; padding: 9px 0; }
   .ticker-track:hover { animation-play-state: paused; }
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .ticker-item {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 0 22px;
-    border-right: 1px solid var(--hairline);
-    font-size: 13px;
+    display: inline-flex; align-items: baseline; gap: 8px;
+    padding: 0 22px; border-right: 1px solid var(--border); font-size: 12.5px;
   }
-  .ticker-item .t-name {
-    color: var(--purple);
-    letter-spacing: 0.04em;
-    text-shadow: 0 0 8px var(--purple-glow);
-  }
-  .ticker-item .t-price { color: var(--text); }
+  .ticker-item .t-name { color: var(--purple); letter-spacing: 0.04em; text-shadow: 0 0 8px var(--purple-glow); }
   .ticker-item .t-change.up { color: var(--up); }
   .ticker-item .t-change.down { color: var(--down); }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; overflow-x: auto; } }
 
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-track { animation: none; overflow-x: auto; }
-  }
-
-  header {
-    padding: 32px 20px 18px;
-    max-width: 760px;
+  /* ---- Header / Overview ---- */
+  .page-head {
+    max-width: 1040px;
     margin: 0 auto;
+    padding: 36px 20px 0;
   }
-  header h1 {
+  .page-head h1 {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 700;
-    font-size: 28px;
-    margin: 0 0 4px;
-    color: var(--text);
-    text-shadow: 0 0 24px var(--purple-glow);
+    font-size: clamp(26px, 4vw, 34px);
+    margin: 0 0 6px;
+    text-shadow: 0 0 30px var(--purple-glow);
   }
-  header .subtitle {
-    color: var(--text-muted);
-    font-size: 13px;
-  }
-  .updated-stamp {
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--purple-soft);
-    border: 1px solid var(--hairline);
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 3px;
-  }
+  .page-head .subtitle { color: var(--text-muted); font-size: 13.5px; margin-bottom: 22px; }
 
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
+  .overview-bar {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
   }
-
-  .card {
+  .stat-pill {
     background: var(--surface);
-    border: 1px solid var(--hairline);
-    border-radius: 8px;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(8px);
-    animation: rise 0.5s ease forwards;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    flex: 1;
+    min-width: 130px;
   }
-  @keyframes rise {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .card-top {
-    padding: 18px 20px 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .card-top .names .he {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 700;
-    font-size: 19px;
-  }
-  .card-top .names .en {
-    font-family: 'JetBrains Mono', monospace;
-    direction: ltr;
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-  .price-block { text-align: left; direction: ltr; }
-  .price-block .price {
+  .stat-pill .num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 22px;
     font-weight: 600;
-    text-shadow: 0 0 14px var(--purple-glow);
   }
-  .price-block .change { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
-  .price-block .change.up { color: var(--up); text-shadow: 0 0 10px var(--up-glow); }
-  .price-block .change.down { color: var(--down); text-shadow: 0 0 10px var(--down-glow); }
-  .price-block .src {
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 2px;
+  .stat-pill .lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .stat-pill.pulse .num { color: var(--purple); text-shadow: 0 0 14px var(--purple-glow); }
+  .stat-pill.up .num { color: var(--up); text-shadow: 0 0 14px var(--up-glow); }
+  .stat-pill.down .num { color: var(--down); text-shadow: 0 0 14px var(--down-glow); }
+
+  .live-dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--up); margin-left: 6px;
+    box-shadow: 0 0 0 0 var(--up-glow);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--up-glow); }
+    70% { box-shadow: 0 0 0 6px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
   }
 
-  .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 14px 20px 6px;
+  .updated-stamp { font-size: 11.5px; color: var(--text-muted); }
+
+  /* ---- Grid ---- */
+  main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px 70px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 18px;
+    align-items: start;
   }
+
+  .card {
+    background: linear-gradient(160deg, var(--surface), var(--surface) 60%, var(--surface-2));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 0 32px rgba(177, 78, 255, 0.18);
+    transform: translateY(-2px);
+  }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .card-top {
+    padding: 18px 20px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-top .names .he { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 19px; }
+  .card-top .names .en { font-family: 'JetBrains Mono', monospace; direction: ltr; font-size: 11.5px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .price-block { text-align: left; direction: ltr; }
+  .price-block .price { font-family: 'JetBrains Mono', monospace; font-size: 23px; font-weight: 600; text-shadow: 0 0 16px var(--purple-glow); }
+  .price-block .change { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .price-block .change.up { color: var(--up); }
+  .price-block .change.down { color: var(--down); }
+  .price-block .src { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ---- Sparkline ---- */
+  .spark-wrap { padding: 4px 16px 8px; }
+  .spark-wrap svg { width: 100%; height: 56px; display: block; }
+
+  /* ---- RSI gauge + badges row ---- */
+  .stats-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 20px 6px;
+    flex-wrap: wrap;
+  }
+  .rsi-gauge { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .rsi-gauge svg { width: 46px; height: 46px; }
+  .rsi-gauge .rsi-label { font-size: 10.5px; color: var(--text-muted); line-height: 1.3; }
+  .rsi-gauge .rsi-val { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; flex: 1; }
   .badge {
     background: var(--surface-2);
-    border: 1px solid var(--hairline);
+    border: 1px solid var(--border);
     border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 12px;
+    padding: 5px 9px;
+    font-size: 11.5px;
     display: flex;
-    gap: 6px;
+    gap: 5px;
     align-items: baseline;
     cursor: pointer;
     transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .badge:hover, .badge.active {
-    border-color: var(--purple-soft);
-    box-shadow: 0 0 12px var(--purple-glow);
-  }
+  .badge:hover, .badge.active { border-color: var(--border-strong); box-shadow: 0 0 12px var(--purple-glow); }
   .badge .label { color: var(--text-muted); }
   .badge .val { font-family: 'JetBrains Mono', monospace; direction: ltr; }
   .badge .val.up { color: var(--up); }
   .badge .val.down { color: var(--down); }
-  .badge .qmark {
-    color: var(--purple-soft);
-    font-size: 10px;
-    border: 1px solid var(--purple-soft);
-    border-radius: 50%;
-    width: 13px;
-    height: 13px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-  }
 
   .indicator-info {
     display: none;
-    margin: 0 20px 14px;
+    margin: 6px 20px 12px;
     padding: 10px 14px;
     background: var(--surface-2);
     border-right: 2px solid var(--purple);
     border-radius: 4px;
-    font-size: 12.5px;
+    font-size: 12px;
     line-height: 1.6;
     color: var(--text-muted);
   }
   .indicator-info.open { display: block; }
-  .indicator-info .name {
-    color: var(--purple);
-    font-weight: 600;
-    margin-bottom: 3px;
-    display: block;
-  }
+  .indicator-info .name { color: var(--purple); font-weight: 600; margin-bottom: 3px; display: block; }
 
-  .analysis {
-    border-top: 1px solid var(--hairline);
-  }
+  /* ---- Analysis ---- */
+  .analysis { border-top: 1px solid var(--border); margin-top: 10px; }
   .analysis-toggle {
-    width: 100%;
-    background: none;
-    border: none;
-    color: var(--purple);
-    font-family: 'Heebo', sans-serif;
-    font-size: 13px;
-    padding: 12px 20px;
-    text-align: right;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%; background: none; border: none; color: var(--purple);
+    font-family: 'Heebo', sans-serif; font-size: 13px; padding: 12px 20px;
+    text-align: right; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
   }
   .analysis-toggle .arrow { transition: transform 0.2s; }
   .analysis-toggle.open .arrow { transform: rotate(180deg); }
-  .analysis-body {
-    display: none;
-    padding: 4px 20px 18px;
-  }
+  .analysis-body { display: none; padding: 4px 20px 18px; }
   .analysis-body.open { display: block; }
 
   .field { margin-bottom: 14px; }
-  .field .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .field .value {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text);
-  }
-  .field.summary .value {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 15px;
-  }
+  .field .eyebrow { font-size: 10.5px; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+  .field .value { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .field.summary .value { font-family: 'Frank Ruhl Libre', serif; font-size: 15px; }
 
-  .report-title {
-    font-size: 12px;
-    color: var(--text-muted);
-    padding: 0 20px 12px;
-  }
-
-  .errors-note {
-    font-size: 11px;
-    color: var(--down);
-    padding: 0 20px 14px;
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-  }
+  .report-title { font-size: 11.5px; color: var(--text-muted); padding: 0 20px 10px; }
+  .errors-note { font-size: 11px; color: var(--down); padding: 0 20px 14px; }
+  .empty-state { text-align: center; padding: 70px 20px; color: var(--text-muted); grid-column: 1 / -1; }
 </style>
 </head>
 <body>
 
 <div class="ticker-wrap"><div class="ticker-track" id="tickerTrack"></div></div>
 
-<header>
+<div class="page-head">
   <h1>לוח מעקב מניות</h1>
-  <div class="subtitle">מחיר רשמי, ניתוח טכני, ותקציר אנליסט - מתעדכן אוטומטית</div>
-  <div class="updated-stamp" id="updatedStamp">טוען...</div>
-</header>
+  <div class="subtitle">מחיר רשמי, ניתוח טכני, ותקציר אנליסט · מתעדכן אוטומטית</div>
+  <div class="overview-bar" id="overviewBar"></div>
+</div>
 
 <main id="cardsContainer">
   <div class="empty-state">טוען נתונים...</div>
@@ -299,69 +250,105 @@
 
 <script>
 const INDICATOR_INFO = {
-  rsi: {
-    name: 'RSI - מדד כוח יחסי',
-    text: 'מודד את קצב ועוצמת השינויים במחיר ב-14 הימים האחרונים, בסקאלה של 0-100. מעל 70 נחשב "קנוי יתר" (ייתכן תיקון למטה), מתחת ל-30 נחשב "מכור יתר" (ייתכן תיקון למעלה). 40-60 נחשב ניטרלי.'
-  },
-  ema20: {
-    name: 'EMA20 - ממוצע נע מעריכי (20 יום)',
-    text: 'מחיר ממוצע מוחלק של 20 הימים האחרונים, שנותן משקל גבוה יותר למחירים הקרובים. כשהמחיר מעל ה-EMA20, זה סימן למומנטום קצר-טווח חיובי.'
-  },
-  ema50: {
-    name: 'EMA50 - ממוצע נע מעריכי (50 יום)',
-    text: 'כמו EMA20 אבל לטווח ארוך יותר (50 יום) - משקף את המגמה הבינונית. כשEMA20 מעל EMA50, זה נקרא "Golden Cross" ונחשב סימן חיובי למגמה.'
-  },
-  macd: {
-    name: 'MACD - היסטוגרם',
-    text: 'מבוסס על ההפרש בין שני ממוצעים נעים (12 ו-26 יום) לעומת קו איתות (9 יום). היסטוגרם חיובי = מומנטום עולה ומתחזק. היסטוגרם שלילי = מומנטום יורד.'
-  },
-  range52w: {
-    name: 'טווח 52 שבועות',
-    text: 'המחיר הגבוה והנמוך ביותר שבו נסחרה המניה ב-12 החודשים האחרונים. מחיר קרוב לשיא יכול להעיד על מומנטום חזק, אך גם על סיכון ל"לחצי מימוש".'
-  }
+  rsi: { name: 'RSI - מדד כוח יחסי', text: 'מודד את קצב ועוצמת השינויים במחיר ב-14 הימים האחרונים, בסקאלה של 0-100. מעל 70 נחשב "קנוי יתר", מתחת ל-30 נחשב "מכור יתר". 40-60 נחשב ניטרלי.' },
+  ema20: { name: 'EMA20 - ממוצע נע מעריכי (20 יום)', text: 'מחיר ממוצע מוחלק של 20 הימים האחרונים, עם משקל גבוה יותר למחירים הקרובים. מחיר מעל ה-EMA20 מעיד על מומנטום קצר-טווח חיובי.' },
+  ema50: { name: 'EMA50 - ממוצע נע מעריכי (50 יום)', text: 'כמו EMA20 אבל לטווח ארוך יותר - משקף את המגמה הבינונית. EMA20 מעל EMA50 נקרא "Golden Cross" ונחשב סימן חיובי.' },
+  macd: { name: 'MACD - היסטוגרם', text: 'ההפרש בין שני ממוצעים נעים (12/26 יום) לעומת קו איתות (9 יום). היסטוגרם חיובי = מומנטום עולה ומתחזק; שלילי = מומנטום יורד.' },
+  range52w: { name: 'טווח 52 שבועות', text: 'המחיר הגבוה והנמוך ביותר ב-12 החודשים האחרונים. קרבה לשיא יכולה להעיד על מומנטום חזק, אך גם על סיכון ל"לחצי מימוש".' }
 };
-
-function formatPrice(p) {
-  return p != null ? p.toFixed(2) : '—';
-}
-
-function changeClass(c) {
-  if (c == null) return '';
-  return c >= 0 ? 'up' : 'down';
-}
-
-function changeSign(c) {
-  if (c == null) return '';
-  return (c >= 0 ? '+' : '') + c.toFixed(2) + '%';
-}
-
-function timeAgo(isoString) {
-  const then = new Date(isoString);
-  const diffMs = Date.now() - then.getTime();
-  const hours = Math.floor(diffMs / 3600000);
-  if (hours < 1) return 'לפני פחות משעה';
-  if (hours === 1) return 'לפני שעה';
-  return `לפני ${hours} שעות`;
-}
 
 const FIELD_LABELS = {
-  revenue_yoy_growth: 'צמיחת הכנסות',
-  margin_trend: 'מגמת שוליים',
-  guidance: 'תחזית הנהלה',
-  cash_flow_and_debt: 'תזרים והתחייבויות',
-  technical_summary: 'קריאה טכנית',
-  overall_summary: 'סיכום'
+  revenue_yoy_growth: 'צמיחת הכנסות', margin_trend: 'מגמת שוליים', guidance: 'תחזית הנהלה',
+  cash_flow_and_debt: 'תזרים והתחייבויות', technical_summary: 'קריאה טכנית', overall_summary: 'סיכום'
 };
+
+function fmt(p) { return p != null ? p.toFixed(2) : '—'; }
+function cls(c) { return c == null ? '' : (c >= 0 ? 'up' : 'down'); }
+function sign(c) { return c == null ? '' : (c >= 0 ? '+' : '') + c.toFixed(2) + '%'; }
+function timeAgo(iso) {
+  const h = Math.floor((Date.now() - new Date(iso).getTime()) / 3600000);
+  if (h < 1) return 'לפני פחות משעה';
+  if (h === 1) return 'לפני שעה';
+  return `לפני ${h} שעות`;
+}
+
+function rsiColor(rsi) {
+  if (rsi == null) return 'var(--text-muted)';
+  if (rsi >= 70) return 'var(--down)';
+  if (rsi <= 30) return 'var(--up)';
+  return 'var(--purple)';
+}
+
+function buildRsiGauge(rsi) {
+  const r = 18, cx = 23, cy = 23;
+  const circumference = 2 * Math.PI * r;
+  const pct = rsi != null ? Math.min(Math.max(rsi, 0), 100) / 100 : 0;
+  const offset = circumference * (1 - pct);
+  const color = rsiColor(rsi);
+  return `
+    <svg viewBox="0 0 46 46">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(177,78,255,0.12)" stroke-width="4"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="4"
+        stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
+        stroke-linecap="round" transform="rotate(-90 ${cx} ${cy})"
+        style="filter: drop-shadow(0 0 4px ${color})"/>
+    </svg>`;
+}
+
+function buildSparkline(closes, isUp) {
+  if (!closes || closes.length < 2) return '';
+  const w = 600, h = 56, pad = 4;
+  const min = Math.min(...closes), max = Math.max(...closes);
+  const range = (max - min) || 1;
+  const stepX = (w - pad * 2) / (closes.length - 1);
+  const points = closes.map((c, i) => {
+    const x = pad + i * stepX;
+    const y = pad + (1 - (c - min) / range) * (h - pad * 2);
+    return [x, y];
+  });
+  const linePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+  const areaPath = linePath + ` L${points[points.length-1][0].toFixed(1)},${h} L${points[0][0].toFixed(1)},${h} Z`;
+  const color = isUp ? 'var(--up)' : 'var(--down)';
+  const gradId = 'grad-' + Math.random().toString(36).slice(2, 9);
+  return `
+    <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${color}" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="${areaPath}" fill="url(#${gradId})" />
+      <path d="${linePath}" fill="none" stroke="${color}" stroke-width="2"
+        style="filter: drop-shadow(0 0 5px ${color})" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>`;
+}
+
+function buildOverview(stocks) {
+  const bar = document.getElementById('overviewBar');
+  let up = 0, down = 0;
+  stocks.forEach(s => {
+    const c = s.official_price ? s.official_price.change_percent : null;
+    if (c == null) return;
+    if (c >= 0) up++; else down++;
+  });
+  bar.innerHTML = `
+    <div class="stat-pill pulse"><div class="num">${stocks.length}</div><div class="lbl">מניות במעקב<span class="live-dot"></span></div></div>
+    <div class="stat-pill up"><div class="num">${up}</div><div class="lbl">בעלייה היום</div></div>
+    <div class="stat-pill down"><div class="num">${down}</div><div class="lbl">בירידה היום</div></div>
+  `;
+}
 
 function buildCard(stock, index) {
   const card = document.createElement('div');
   card.className = 'card';
-  card.style.animationDelay = (index * 0.06) + 's';
+  card.style.animationDelay = (index * 0.07) + 's';
 
   const price = stock.official_price;
   const tech = stock.technical;
   const displayPrice = price ? price.price_ils : (tech ? tech.current_price : null);
   const displayChange = price ? price.change_percent : null;
+  const isUp = displayChange == null || displayChange >= 0;
 
   let html = `
     <div class="card-top">
@@ -370,40 +357,43 @@ function buildCard(stock, index) {
         <div class="en mono">${stock.ticker}</div>
       </div>
       <div class="price-block">
-        <div class="price mono">₪${formatPrice(displayPrice)}</div>
-        ${displayChange != null ? `<div class="change mono ${changeClass(displayChange)}">${changeSign(displayChange)}</div>` : ''}
+        <div class="price mono">₪${fmt(displayPrice)}</div>
+        ${displayChange != null ? `<div class="change mono ${cls(displayChange)}">${sign(displayChange)}</div>` : ''}
         <div class="src">${price ? 'מאיה · בורסת ת"א' : 'Yahoo'}</div>
       </div>
     </div>
   `;
 
+  if (tech && tech.recent_closes) {
+    html += `<div class="spark-wrap">${buildSparkline(tech.recent_closes, isUp)}</div>`;
+  }
+
   if (tech) {
-    html += `<div class="badges">
-      <div class="badge" data-info="rsi"><span class="label">RSI</span><span class="val">${tech.rsi_14 ?? '—'}</span><span class="qmark">?</span></div>
-      <div class="badge" data-info="ema20"><span class="label">EMA20</span><span class="val">${tech.ema_20 ?? '—'}</span><span class="qmark">?</span></div>
-      <div class="badge" data-info="ema50"><span class="label">EMA50</span><span class="val">${tech.ema_50 ?? '—'}</span><span class="qmark">?</span></div>
-      <div class="badge" data-info="macd"><span class="label">MACD</span><span class="val ${tech.macd ? changeClass(tech.macd.histogram) : ''}">${tech.macd ? tech.macd.histogram : '—'}</span><span class="qmark">?</span></div>
-      <div class="badge" data-info="range52w"><span class="label">52w</span><span class="val">${tech['52w_low'] ?? '—'}–${tech['52w_high'] ?? '—'}</span><span class="qmark">?</span></div>
+    html += `<div class="stats-row">
+      <div class="rsi-gauge" data-info="rsi">
+        ${buildRsiGauge(tech.rsi_14)}
+        <div><div class="rsi-val mono" style="color:${rsiColor(tech.rsi_14)}">${tech.rsi_14 ?? '—'}</div><div class="rsi-label">RSI</div></div>
+      </div>
+      <div class="badges">
+        <div class="badge" data-info="ema20"><span class="label">EMA20</span><span class="val">${tech.ema_20 ?? '—'}</span></div>
+        <div class="badge" data-info="ema50"><span class="label">EMA50</span><span class="val">${tech.ema_50 ?? '—'}</span></div>
+        <div class="badge" data-info="macd"><span class="label">MACD</span><span class="val ${tech.macd ? cls(tech.macd.histogram) : ''}">${tech.macd ? tech.macd.histogram : '—'}</span></div>
+        <div class="badge" data-info="range52w"><span class="label">52w</span><span class="val">${tech['52w_low'] ?? '—'}–${tech['52w_high'] ?? '—'}</span></div>
+      </div>
     </div>
     <div class="indicator-info"></div>`;
   }
 
-  if (stock.report_title) {
-    html += `<div class="report-title">דוח אחרון: ${stock.report_title}</div>`;
-  }
+  if (stock.report_title) html += `<div class="report-title">דוח אחרון: ${stock.report_title}</div>`;
 
   if (stock.analysis) {
     html += `<div class="analysis">
-      <button class="analysis-toggle">
-        <span>ניתוח אנליסט מלא</span>
-        <span class="arrow">▾</span>
-      </button>
+      <button class="analysis-toggle"><span>ניתוח אנליסט מלא</span><span class="arrow">▾</span></button>
       <div class="analysis-body">`;
     for (const [key, label] of Object.entries(FIELD_LABELS)) {
       if (stock.analysis[key]) {
         html += `<div class="field ${key === 'overall_summary' ? 'summary' : ''}">
-          <div class="eyebrow">${label}</div>
-          <div class="value">${stock.analysis[key]}</div>
+          <div class="eyebrow">${label}</div><div class="value">${stock.analysis[key]}</div>
         </div>`;
       }
     }
@@ -417,21 +407,15 @@ function buildCard(stock, index) {
   card.innerHTML = html;
 
   const infoBox = card.querySelector('.indicator-info');
-  const badges = card.querySelectorAll('.badge');
-  badges.forEach(badge => {
-    badge.addEventListener('click', () => {
-      const key = badge.getAttribute('data-info');
+  const infoTriggers = card.querySelectorAll('[data-info]');
+  infoTriggers.forEach(el => {
+    el.addEventListener('click', () => {
+      const key = el.getAttribute('data-info');
       const info = INDICATOR_INFO[key];
-      const wasActive = badge.classList.contains('active');
-
-      badges.forEach(b => b.classList.remove('active'));
-
-      if (wasActive) {
-        infoBox.classList.remove('open');
-        return;
-      }
-
-      badge.classList.add('active');
+      const wasActive = el.classList.contains('active');
+      infoTriggers.forEach(b => b.classList.remove('active'));
+      if (wasActive) { infoBox.classList.remove('open'); return; }
+      el.classList.add('active');
       infoBox.innerHTML = `<span class="name">${info.name}</span>${info.text}`;
       infoBox.classList.add('open');
     });
@@ -456,8 +440,8 @@ function buildTicker(stocks) {
     const c = price ? price.change_percent : null;
     return `<span class="ticker-item">
       <span class="t-name mono">${s.ticker}</span>
-      <span class="t-price mono">₪${formatPrice(p)}</span>
-      ${c != null ? `<span class="t-change mono ${changeClass(c)}">${changeSign(c)}</span>` : ''}
+      <span class="t-price mono">₪${fmt(p)}</span>
+      ${c != null ? `<span class="t-change mono ${cls(c)}">${sign(c)}</span>` : ''}
     </span>`;
   }).join('');
   track.innerHTML = items + items;
@@ -466,25 +450,31 @@ function buildTicker(stocks) {
 fetch('data.json')
   .then(r => r.json())
   .then(data => {
-    document.getElementById('updatedStamp').textContent =
-      `עודכן לאחרונה: ${timeAgo(data.generated_at)}`;
-
     const container = document.getElementById('cardsContainer');
     container.innerHTML = '';
 
     const stocks = Object.values(data.stocks);
     if (!stocks.length) {
       container.innerHTML = '<div class="empty-state">אין עדיין נתונים. ה-Action הראשון עוד לא רץ.</div>';
+      document.getElementById('overviewBar').innerHTML =
+        `<div class="updated-stamp">עודכן לאחרונה: ${timeAgo(data.generated_at)}</div>`;
       return;
     }
 
     buildTicker(data.stocks);
+    buildOverview(stocks);
+    const stamp = document.createElement('div');
+    stamp.className = 'updated-stamp';
+    stamp.style.width = '100%';
+    stamp.style.marginTop = '4px';
+    stamp.textContent = `עודכן לאחרונה: ${timeAgo(data.generated_at)}`;
+    document.getElementById('overviewBar').appendChild(stamp);
+
     stocks.forEach((s, i) => container.appendChild(buildCard(s, i)));
   })
   .catch(err => {
     document.getElementById('cardsContainer').innerHTML =
       `<div class="empty-state">לא ניתן לטעון את הנתונים כרגע.<br><span class="mono" style="font-size:11px">${err}</span></div>`;
-    document.getElementById('updatedStamp').textContent = 'שגיאת טעינה';
   });
 </script>
 
