@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T07:54:54.306432Z",
+  "generated_at": "2026-07-25T16:49:25.666974Z",
   "stocks": {
     "TSEM": {
       "ticker": "TSEM",
@@ -19,17 +19,16 @@
         "current_price": 793.5,
         "52w_high": 912.7,
         "52w_low": 153.0,
-        "rsi_14": 52.92,
-        "ema_20": 733.39,
-        "ema_50": 721.29,
+        "rsi_14": 56.86,
+        "ema_20": 739.11,
+        "ema_50": 724.12,
         "macd": {
-          "macd": -4.1564,
-          "signal": -9.2583,
-          "histogram": 5.1019
+          "macd": 1.1452,
+          "signal": -7.1776,
+          "histogram": 8.3228
         },
-        "data_points_used": 123,
+        "data_points_used": 124,
         "recent_closes": [
-          737.7,
           764.4,
           822.3,
           819.7,
@@ -58,13 +57,14 @@
           706.8,
           704.6,
           750.0,
-          757.9
+          757.9,
+          793.5
         ]
       },
       "report_title": "מועד פרסום דוח רבעון 2 לשנת 2026 ביום 4.8.26, שיחת ועידה באותו היום בשעה 10AM ET",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdNR8knWpVGoAw6MH75Tw'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdP7u1mnzE9bh19ob3kTG'}"
       ]
     },
     "LUMI": {
@@ -79,17 +79,16 @@
         "current_price": 71.39,
         "52w_high": 80.98,
         "52w_low": 59.1,
-        "rsi_14": 57.0,
-        "ema_20": 69.68,
-        "ema_50": 69.95,
+        "rsi_14": 58.36,
+        "ema_20": 69.85,
+        "ema_50": 70.0,
         "macd": {
-          "macd": 0.8739,
-          "signal": 0.4162,
-          "histogram": 0.4577
+          "macd": 0.8905,
+          "signal": 0.5111,
+          "histogram": 0.3795
         },
-        "data_points_used": 123,
+        "data_points_used": 124,
         "recent_closes": [
-          66.96,
           68.29,
           66.55,
           65.8,
@@ -118,13 +117,14 @@
           72.05,
           71.52,
           72.09,
-          71.03
+          71.03,
+          71.39
         ]
       },
       "report_title": "Notice regarding Conference Call on Bank Leumi's Financial Statements for 30.6.2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdNRAYY7fA3jny4RwryrX'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdP7vi7xoc3qBnipJ5w1w'}"
       ]
     },
     "TEVA": {
@@ -139,17 +139,16 @@
         "current_price": 95.8,
         "52w_high": 113.5,
         "52w_low": 53.05,
-        "rsi_14": 41.42,
-        "ema_20": 98.41,
-        "ema_50": 99.07,
+        "rsi_14": 42.79,
+        "ema_20": 98.16,
+        "ema_50": 98.95,
         "macd": {
-          "macd": -0.9637,
-          "signal": -0.3311,
-          "histogram": -0.6326
+          "macd": -1.0434,
+          "signal": -0.4736,
+          "histogram": -0.5698
         },
-        "data_points_used": 123,
+        "data_points_used": 124,
         "recent_closes": [
-          101.8,
           101.7,
           99.5,
           96.99,
@@ -178,7 +177,8 @@
           97.35,
           96.42,
           96.18,
-          95.33
+          95.33,
+          95.8
         ]
       },
       "report_title": null,
@@ -203,17 +203,16 @@
         "current_price": 70.76,
         "52w_high": 104.5,
         "52w_low": 14.25,
-        "rsi_14": 50.37,
-        "ema_20": 72.45,
-        "ema_50": 73.38,
+        "rsi_14": 46.08,
+        "ema_20": 72.29,
+        "ema_50": 73.27,
         "macd": {
-          "macd": -0.9304,
-          "signal": -1.4149,
-          "histogram": 0.4845
+          "macd": -0.9593,
+          "signal": -1.3238,
+          "histogram": 0.3645
         },
-        "data_points_used": 123,
+        "data_points_used": 124,
         "recent_closes": [
-          75.74,
           80.4,
           78.14,
           72.7,
@@ -242,7 +241,8 @@
           71.5,
           73.1,
           72.0,
-          73.18
+          73.18,
+          70.76
         ]
       },
       "report_title": null,
@@ -267,17 +267,16 @@
         "current_price": 206.0,
         "52w_high": 292.7,
         "52w_low": 89.03,
-        "rsi_14": 50.18,
-        "ema_20": 217.58,
-        "ema_50": 216.02,
+        "rsi_14": 42.7,
+        "ema_20": 216.47,
+        "ema_50": 215.63,
         "macd": {
-          "macd": -1.8007,
-          "signal": -1.2634,
-          "histogram": -0.5373
+          "macd": -2.4888,
+          "signal": -1.5085,
+          "histogram": -0.9803
         },
-        "data_points_used": 123,
+        "data_points_used": 124,
         "recent_closes": [
-          221.4,
           224.6,
           212.0,
           204.5,
@@ -306,7 +305,8 @@
           212.0,
           211.2,
           214.0,
-          218.4
+          218.4,
+          206.0
         ]
       },
       "report_title": "מצגת שוק ההון  לרבעון  ראשון 2026",
