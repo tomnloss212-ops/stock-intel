@@ -1,33 +1,27 @@
 {
-  "generated_at": "2026-08-05T17:23:20.698479Z",
+  "generated_at": "2026-08-06T08:21:31.234178Z",
   "stocks": {
     "TSEM": {
       "ticker": "TSEM",
       "name": "Tower Semiconductor",
       "name_he": "טאואר סמיקונדקטור",
-      "official_price": {
-        "price_ils": 665.4,
-        "change_percent": -0.09,
-        "as_of": "05/08/2026\n15",
-        "source": "maya.tase.co.il (official TASE disclosure system)",
-        "delayed_minutes": 15
-      },
+      "official_price": null,
       "technical": {
         "symbol": "TSEM.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 665.4,
+        "current_price": 635.6,
         "52w_high": 912.7,
         "52w_low": 155.9,
-        "rsi_14": 45.12,
-        "ema_20": 693.51,
-        "ema_50": 704.25,
+        "rsi_14": 42.01,
+        "ema_20": 690.67,
+        "ema_50": 703.05,
         "macd": {
-          "macd": -21.4749,
-          "signal": -17.8731,
-          "histogram": -3.6018
+          "macd": -23.8514,
+          "signal": -18.3475,
+          "histogram": -5.5039
         },
-        "data_points_used": 124,
+        "data_points_used": 123,
         "recent_closes": [
           821.8,
           810.8,
@@ -58,13 +52,14 @@
           677.0,
           664.0,
           666.0,
-          665.4
+          635.6
         ]
       },
-      "report_title": "דוח רבעון שני 2026",
+      "report_title": null,
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdjzNj87cB2riSqLopnF8'}"
+        "official_price: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/2028?securityId=1138494\", waiting until \"load\"\n",
+        "report: Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://maya.tase.co.il/he/companies/2028/reports?eventsFamilyIds%5B%5D=100\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/2028/reports?eventsFamilyIds%5B%5D=100\", waiting until \"load\"\n"
       ]
     },
     "LUMI": {
@@ -76,18 +71,18 @@
         "symbol": "LUMI.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 72.6,
+        "current_price": 73.16,
         "52w_high": 80.98,
         "52w_low": 59.1,
-        "rsi_14": 57.72,
-        "ema_20": 70.93,
-        "ema_50": 70.46,
+        "rsi_14": 60.09,
+        "ema_20": 70.98,
+        "ema_50": 70.48,
         "macd": {
-          "macd": 0.9621,
-          "signal": 0.7782,
-          "histogram": 0.1839
+          "macd": 1.0066,
+          "signal": 0.7869,
+          "histogram": 0.2197
         },
-        "data_points_used": 124,
+        "data_points_used": 123,
         "recent_closes": [
           66.4,
           65.7,
@@ -118,13 +113,13 @@
           72.39,
           71.7,
           73.77,
-          72.6
+          73.16
         ]
       },
-      "report_title": "Notice regarding Conference Call on Bank Leumi's Financial Statements for 30.6.2026",
+      "report_title": null,
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdjzQ721nmcax9MR8NJva'}"
+        "report: Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://maya.tase.co.il/he/companies/604/reports?eventsFamilyIds%5B%5D=100\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/604/reports?eventsFamilyIds%5B%5D=100\", waiting until \"load\"\n"
       ]
     },
     "TEVA": {
@@ -136,18 +131,18 @@
         "symbol": "TEVA.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 104.3,
+        "current_price": 104.1,
         "52w_high": 113.5,
         "52w_low": 54.34,
-        "rsi_14": 57.31,
-        "ema_20": 101.14,
-        "ema_50": 100.11,
+        "rsi_14": 56.98,
+        "ema_20": 101.12,
+        "ema_50": 100.1,
         "macd": {
-          "macd": 1.4086,
-          "signal": 0.5663,
-          "histogram": 0.8422
+          "macd": 1.3925,
+          "signal": 0.5629,
+          "histogram": 0.8296
         },
-        "data_points_used": 124,
+        "data_points_used": 123,
         "recent_closes": [
           100.0,
           102.7,
@@ -178,7 +173,7 @@
           108.7,
           104.3,
           103.5,
-          104.3
+          104.1
         ]
       },
       "report_title": null,
@@ -189,29 +184,23 @@
       "ticker": "DORL",
       "name": "Doral Renewable Energy",
       "name_he": "דוראל אנרגיה",
-      "official_price": {
-        "price_ils": 64.0,
-        "change_percent": -6.76,
-        "as_of": "05/08/2026\n15",
-        "source": "maya.tase.co.il (official TASE disclosure system)",
-        "delayed_minutes": 15
-      },
+      "official_price": null,
       "technical": {
         "symbol": "DORL.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 64.0,
+        "current_price": 64.98,
         "52w_high": 104.5,
         "52w_low": 14.25,
-        "rsi_14": 38.88,
-        "ema_20": 69.51,
-        "ema_50": 71.72,
+        "rsi_14": 40.16,
+        "ema_20": 69.6,
+        "ema_50": 71.76,
         "macd": {
-          "macd": -1.9299,
-          "signal": -1.5902,
-          "histogram": -0.3398
+          "macd": -1.8519,
+          "signal": -1.5748,
+          "histogram": -0.2771
         },
-        "data_points_used": 124,
+        "data_points_used": 123,
         "recent_closes": [
           75.28,
           72.24,
@@ -242,40 +231,37 @@
           69.1,
           65.85,
           68.64,
-          64.0
+          64.98
         ]
       },
       "report_title": null,
       "analysis": null,
-      "errors": []
+      "errors": [
+        "official_price: Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://maya.tase.co.il/he/companies/1801?securityId=1166768\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/1801?securityId=1166768\", waiting until \"load\"\n",
+        "report: Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://maya.tase.co.il/he/companies/1801/reports?eventsFamilyIds%5B%5D=100\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/1801/reports?eventsFamilyIds%5B%5D=100\", waiting until \"load\"\n"
+      ]
     },
     "NOFR": {
       "ticker": "NOFR",
       "name": "Nofar Energy",
       "name_he": "נופר אנרג'י",
-      "official_price": {
-        "price_ils": 169.9,
-        "change_percent": -5.35,
-        "as_of": "05/08/2026\n15",
-        "source": "maya.tase.co.il (official TASE disclosure system)",
-        "delayed_minutes": 15
-      },
+      "official_price": null,
       "technical": {
         "symbol": "NOFR.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 169.9,
+        "current_price": 170.9,
         "52w_high": 292.7,
         "52w_low": 89.03,
-        "rsi_14": 30.89,
-        "ema_20": 196.69,
-        "ema_50": 206.37,
+        "rsi_14": 31.25,
+        "ema_20": 196.79,
+        "ema_50": 206.4,
         "macd": {
-          "macd": -11.7723,
-          "signal": -8.1326,
-          "histogram": -3.6398
+          "macd": -11.6928,
+          "signal": -8.1169,
+          "histogram": -3.5758
         },
-        "data_points_used": 124,
+        "data_points_used": 123,
         "recent_closes": [
           208.9,
           211.1,
@@ -306,12 +292,15 @@
           180.0,
           175.2,
           179.5,
-          169.9
+          170.9
         ]
       },
-      "report_title": "מצגת שוק ההון  לרבעון  ראשון 2026",
+      "report_title": null,
       "analysis": null,
-      "errors": []
+      "errors": [
+        "official_price: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/1831?securityId=1170877\", waiting until \"load\"\n",
+        "report: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://maya.tase.co.il/he/companies/1831/reports?eventsFamilyIds%5B%5D=100\", waiting until \"load\"\n"
+      ]
     }
   }
 }
