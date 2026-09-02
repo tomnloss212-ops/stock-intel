@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-02T10:19:45.212177Z",
+  "generated_at": "2026-09-02T19:08:21.770537Z",
   "stocks": {
     "TSEM": {
       "ticker": "TSEM",
       "name": "Tower Semiconductor",
       "name_he": "טאואר סמיקונדקטור",
       "official_price": {
-        "price_ils": 600.3,
-        "change_percent": 0.89,
-        "as_of": "02/09/2026 13:04",
+        "price_ils": 620.5,
+        "change_percent": 4.29,
+        "as_of": "02/09/2026\n15",
         "source": "maya.tase.co.il (official TASE disclosure system)",
         "delayed_minutes": 15
       },
@@ -16,16 +16,16 @@
         "symbol": "TSEM.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 600.3,
+        "current_price": 620.5,
         "52w_high": 912.7,
-        "52w_low": 191.1,
-        "rsi_14": 38.73,
-        "ema_20": 668.64,
-        "ema_50": 692.27,
+        "52w_low": 204.0,
+        "rsi_14": 41.85,
+        "ema_20": 670.56,
+        "ema_50": 693.06,
         "macd": {
-          "macd": -28.6954,
-          "signal": -17.3277,
-          "histogram": -11.3677
+          "macd": -27.084,
+          "signal": -17.0054,
+          "histogram": -10.0786
         },
         "data_points_used": 127,
         "recent_closes": [
@@ -58,13 +58,13 @@
           656.3,
           612.2,
           595.0,
-          600.3
+          620.5
         ]
       },
       "report_title": "דו\"ח רבעון שני לשנת 2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeSj3WBrrUgb7jkywrgj'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cef93H4RmUrjwidYpkfUQ'}"
       ]
     },
     "LUMI": {
@@ -76,16 +76,16 @@
         "symbol": "LUMI.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 77.66,
+        "current_price": 77.77,
         "52w_high": 80.98,
         "52w_low": 59.1,
-        "rsi_14": 65.72,
-        "ema_20": 75.37,
+        "rsi_14": 66.1,
+        "ema_20": 75.38,
         "ema_50": 73.38,
         "macd": {
-          "macd": 1.3051,
-          "signal": 1.321,
-          "histogram": -0.016
+          "macd": 1.3138,
+          "signal": 1.3228,
+          "histogram": -0.0089
         },
         "data_points_used": 127,
         "recent_closes": [
@@ -118,13 +118,13 @@
           76.36,
           76.31,
           76.78,
-          77.66
+          77.77
         ]
       },
       "report_title": "Financial Results Presentation Q2 2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeSkcsuNTjUe4FWMrWMT'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cef94wAuU9XAU85oCNEQp'}"
       ]
     },
     "TEVA": {
@@ -136,16 +136,16 @@
         "symbol": "TEVA.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 108.9,
-        "52w_high": 114.4,
+        "current_price": 110.1,
+        "52w_high": 115.3,
         "52w_low": 60.82,
-        "rsi_14": 52.82,
-        "ema_20": 108.67,
-        "ema_50": 105.2,
+        "rsi_14": 55.76,
+        "ema_20": 108.78,
+        "ema_50": 105.24,
         "macd": {
-          "macd": 1.7972,
-          "signal": 2.3047,
-          "histogram": -0.5075
+          "macd": 1.8929,
+          "signal": 2.3239,
+          "histogram": -0.4309
         },
         "data_points_used": 127,
         "recent_closes": [
@@ -178,7 +178,7 @@
           110.3,
           107.1,
           110.2,
-          108.9
+          110.1
         ]
       },
       "report_title": null,
@@ -190,9 +190,9 @@
       "name": "Doral Renewable Energy",
       "name_he": "דוראל אנרגיה",
       "official_price": {
-        "price_ils": 58.13,
-        "change_percent": -3.12,
-        "as_of": "02/09/2026 13:05",
+        "price_ils": 58.19,
+        "change_percent": -3.02,
+        "as_of": "02/09/2026\n15",
         "source": "maya.tase.co.il (official TASE disclosure system)",
         "delayed_minutes": 15
       },
@@ -200,16 +200,16 @@
         "symbol": "DORL.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 58.13,
+        "current_price": 58.19,
         "52w_high": 104.5,
         "52w_low": 14.95,
-        "rsi_14": 34.0,
-        "ema_20": 65.43,
+        "rsi_14": 34.07,
+        "ema_20": 65.44,
         "ema_50": 68.14,
         "macd": {
-          "macd": -1.9427,
-          "signal": -1.3382,
-          "histogram": -0.6044
+          "macd": -1.9379,
+          "signal": -1.3373,
+          "histogram": -0.6006
         },
         "data_points_used": 127,
         "recent_closes": [
@@ -242,7 +242,7 @@
           65.5,
           65.5,
           60.0,
-          58.13
+          58.19
         ]
       },
       "report_title": null,
@@ -254,9 +254,9 @@
       "name": "Nofar Energy",
       "name_he": "נופר אנרג'י",
       "official_price": {
-        "price_ils": 169.0,
-        "change_percent": 2.3,
-        "as_of": "02/09/2026 13:06",
+        "price_ils": 171.6,
+        "change_percent": 3.87,
+        "as_of": "02/09/2026\n15",
         "source": "maya.tase.co.il (official TASE disclosure system)",
         "delayed_minutes": 15
       },
@@ -264,16 +264,16 @@
         "symbol": "NOFR.TA",
         "currency": "ILS",
         "exchange": "Tel Aviv",
-        "current_price": 168.9,
+        "current_price": 171.6,
         "52w_high": 292.7,
         "52w_low": 89.03,
-        "rsi_14": 40.41,
-        "ema_20": 176.85,
-        "ema_50": 189.08,
+        "rsi_14": 42.75,
+        "ema_20": 177.11,
+        "ema_50": 189.19,
         "macd": {
-          "macd": -7.9298,
-          "signal": -7.6838,
-          "histogram": -0.2459
+          "macd": -7.7144,
+          "signal": -7.6407,
+          "histogram": -0.0736
         },
         "data_points_used": 127,
         "recent_closes": [
@@ -306,13 +306,13 @@
           166.0,
           165.7,
           165.2,
-          168.9
+          171.6
         ]
       },
       "report_title": "מצגת שוק ההון  לרבעון שני 2026-תיקון טעות סופר",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeSqWMt7eAuwGVHaVaFW'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cef99wSAUmbS97yQWaTFJ'}"
       ]
     }
   }
