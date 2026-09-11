@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T18:52:14.266834Z",
+  "generated_at": "2026-09-11T10:21:46.745748Z",
   "stocks": {
     "TSEM": {
       "ticker": "TSEM",
@@ -21,13 +21,13 @@
         "52w_low": 214.8,
         "rsi_14": 45.46,
         "ema_20": 663.11,
-        "ema_50": 684.68,
+        "ema_50": 684.7,
         "macd": {
-          "macd": -15.9926,
-          "signal": -18.8674,
-          "histogram": 2.8748
+          "macd": -15.9935,
+          "signal": -18.8688,
+          "histogram": 2.8753
         },
-        "data_points_used": 128,
+        "data_points_used": 127,
         "recent_closes": [
           677.0,
           664.0,
@@ -64,7 +64,7 @@
       "report_title": "דו\"ח רבעון שני לשנת 2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CevGHHyFu5ZU9hMU4TM2i'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CewVAGZ17g3ECz7nEqU3x'}"
       ]
     },
     "LUMI": {
@@ -83,11 +83,11 @@
         "ema_20": 77.12,
         "ema_50": 74.62,
         "macd": {
-          "macd": 1.6371,
-          "signal": 1.5457,
+          "macd": 1.6372,
+          "signal": 1.5458,
           "histogram": 0.0914
         },
-        "data_points_used": 128,
+        "data_points_used": 127,
         "recent_closes": [
           72.39,
           71.7,
@@ -124,7 +124,7 @@
       "report_title": "Financial Results Presentation Q2 2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CevGK1x9kYkSUmuXDjP2n'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CewVBojko5VJPc4X7fzYN'}"
       ]
     },
     "TEVA": {
@@ -141,13 +141,13 @@
         "52w_low": 60.82,
         "rsi_14": 58.26,
         "ema_20": 109.41,
-        "ema_50": 106.26,
+        "ema_50": 106.25,
         "macd": {
-          "macd": 1.3376,
-          "signal": 1.6512,
-          "histogram": -0.3136
+          "macd": 1.3377,
+          "signal": 1.6514,
+          "histogram": -0.3137
         },
-        "data_points_used": 128,
+        "data_points_used": 127,
         "recent_closes": [
           108.7,
           104.3,
@@ -211,7 +211,7 @@
           "signal": -2.0221,
           "histogram": -0.7264
         },
-        "data_points_used": 128,
+        "data_points_used": 127,
         "recent_closes": [
           69.1,
           65.85,
@@ -269,13 +269,13 @@
         "52w_low": 89.03,
         "rsi_14": 44.29,
         "ema_20": 176.71,
-        "ema_50": 186.34,
+        "ema_50": 186.33,
         "macd": {
-          "macd": -4.0572,
-          "signal": -5.5031,
-          "histogram": 1.446
+          "macd": -4.0571,
+          "signal": -5.503,
+          "histogram": 1.4459
         },
-        "data_points_used": 128,
+        "data_points_used": 127,
         "recent_closes": [
           180.0,
           175.2,
@@ -312,7 +312,7 @@
       "report_title": "מצגת שוק ההון  לרבעון שני 2026-תיקון טעות סופר",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CevGQNP7M9SLS8a7pKpbC'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CewVGfMcu6U21vXYcLExP'}"
       ]
     }
   }
