@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-23T10:59:49.119198Z",
+  "generated_at": "2026-10-23T19:41:32.980894Z",
   "stocks": {
     "TSEM": {
       "ticker": "TSEM",
       "name": "Tower Semiconductor",
       "name_he": "טאואר סמיקונדקטור",
       "official_price": {
-        "price_ils": null,
+        "price_ils": 524.5,
         "change_percent": -4.98,
-        "as_of": "23/10/2026 13:44",
+        "as_of": "23/10/2026\n15",
         "source": "maya.tase.co.il (official TASE disclosure system)",
         "delayed_minutes": 15
       },
@@ -18,7 +18,7 @@
         "exchange": "Tel Aviv",
         "current_price": 524.5,
         "52w_high": 912.7,
-        "52w_low": 237.8,
+        "52w_low": 248.6,
         "rsi_14": 31.93,
         "ema_20": 640.34,
         "ema_50": 667.33,
@@ -64,7 +64,7 @@
       "report_title": "מועד שיחת ועידה ופרסום תוצאות רבעון שלישי לשנת 2026 ביום 2.11.26, שעת השיחה 17:00",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgK431gEsu3T7EH7Vh59c'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKjporvHG8LJSXu76C4Z'}"
       ]
     },
     "LUMI": {
@@ -78,7 +78,7 @@
         "exchange": "Tel Aviv",
         "current_price": 74.55,
         "52w_high": 80.98,
-        "52w_low": 63.4,
+        "52w_low": 63.64,
         "rsi_14": 48.48,
         "ema_20": 74.7,
         "ema_50": 74.77,
@@ -124,7 +124,7 @@
       "report_title": "Financial Results Presentation Q2 2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgK44Y6N19fS9iy3mW6ib'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKjrS9GLSmThu8dLpXGh'}"
       ]
     },
     "TEVA": {
@@ -190,9 +190,9 @@
       "name": "Doral Renewable Energy",
       "name_he": "דוראל אנרגיה",
       "official_price": {
-        "price_ils": null,
+        "price_ils": 52.43,
         "change_percent": -0.4,
-        "as_of": "23/10/2026 13:45",
+        "as_of": "23/10/2026\n15",
         "source": "maya.tase.co.il (official TASE disclosure system)",
         "delayed_minutes": 15
       },
@@ -202,7 +202,7 @@
         "exchange": "Tel Aviv",
         "current_price": 52.43,
         "52w_high": 104.5,
-        "52w_low": 20.05,
+        "52w_low": 21.22,
         "rsi_14": 47.85,
         "ema_20": 52.32,
         "ema_50": 57.0,
@@ -254,9 +254,9 @@
       "name": "Nofar Energy",
       "name_he": "נופר אנרג'י",
       "official_price": {
-        "price_ils": null,
+        "price_ils": 141.0,
         "change_percent": -2.22,
-        "as_of": "23/10/2026 13:46",
+        "as_of": "23/10/2026\n15",
         "source": "maya.tase.co.il (official TASE disclosure system)",
         "delayed_minutes": 15
       },
@@ -312,7 +312,7 @@
       "report_title": "מצגת שוק ההון  לרבעון שני 2026-תיקון טעות סופר",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgK49BUmZVKhSAG8wRSTA'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKjwuuFWLp1U54HsYvcB'}"
       ]
     }
   }
