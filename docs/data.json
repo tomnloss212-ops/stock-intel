@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T20:16:25.051005Z",
+  "generated_at": "2026-11-15T13:15:27.162984Z",
   "stocks": {
     "TSEM": {
       "ticker": "TSEM",
@@ -64,7 +64,7 @@
       "report_title": "דוח רבעון 3 לשנת 2026",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch3SGvX3kV6kF7FHB8ANz'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch4myyV1AuTgpQg4ky5nB'}"
       ]
     },
     "LUMI": {
@@ -124,7 +124,7 @@
       "report_title": "Bank Leumi to Report 3Q 2026 Financial Results on November 17, 2026, conference call on the same day at 5 PM(Israel)",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch3SJSQAvaGE11imEddDc'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch4n1V42mVpaGBu4pTzXT'}"
       ]
     },
     "TEVA": {
@@ -312,7 +312,7 @@
       "report_title": "מועד פרסום דוחות כספיים לרבעון השלישי לשנת 2026 ב-26.11.26 ושיחת ועידה בשעה 12:00",
       "analysis": null,
       "errors": [
-        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch3SP3dbgk255RsejDkQX'}"
+        "ai_analysis: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch4n67S9kSmhx665xkjpy'}"
       ]
     }
   }
